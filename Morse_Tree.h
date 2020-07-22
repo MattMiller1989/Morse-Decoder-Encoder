@@ -13,10 +13,9 @@ private:
 
 public:
 	
-	Morse_Tree(){
-
+	Morse_Tree(){	//Default constructor that creates root as a nullptr
+		
 		root = NULL;
-
 
 	}
 
@@ -25,8 +24,10 @@ public:
 		updated everytime the Node to be inserted is pushed down
 		the height of the Tree*/
 		
-		
-		char code_segment = code[0];
+		/*insert function has time complexity of O(n)*/
+
+
+		char code_segment = code[0]; //first character of the code segment, could be '.', '_', or ' '
 		
 		if (curr_root == NULL) {
 			/*Base case for the recursive function*/
@@ -34,11 +35,11 @@ public:
 			
 		}
 		
-		if (code.size() == 0) {
-			curr_root->letter = letter;
+		if (code.size() == 0) { // checks to see if the end of the morse code segment has been reached
+			curr_root->letter = letter; 
 		}
 		else {
-			if (code_segment == '.') {
+			if (code_segment == '.') { 
 				insert(curr_root->left, letter, code.substr(1));
 
 			}
@@ -50,7 +51,7 @@ public:
 
 
 	}
-	void build_tree(istream& read_in) {
+	void build_tree(istream& read_in) { 
 		
 		
 		string line;
@@ -79,9 +80,9 @@ public:
 
 		string::iterator it;
 		for (it = message.begin(); it != message.end(); it++) {		
-			char curr_char = *it;
+			char curr_char = tolower(*it);
 			string curr_code = code_map[curr_char];					// simple stores each letter and its corresponding code into the map
-			coded_message = coded_message + curr_code + " ";
+			coded_message = coded_message + curr_code + " ";		// storing of an item in a map is O(1)
 		}
 
 		return coded_message;
@@ -90,6 +91,7 @@ public:
 	string decode(string coded_message) {
 		/*This method parses through the string of morse code
 		and will return its alphanumeric equivalence */
+		
 		string decoded_message;
 
 		istringstream message(coded_message);
@@ -122,19 +124,16 @@ public:
 		}
 		char code_segment = code[0];
 		
-		if (curr_root == NULL) {
-			cout << "Invalid code" << endl;
+		
+		if (code_segment == '.') {
+			/*Determines if the traversal needs to go left*/
+			return find_letter(curr_root->left, code.substr(1));
 		}
-		else {
-			if (code_segment == '.') {
-				/*Determines if the traversal needs to go left*/
-				return find_letter(curr_root->left, code.substr(1));
-			}
-			if (code_segment == '_') {
-				/*Determines if the traversal needs to go right*/
-				return find_letter(curr_root->right, code.substr(1));
-			}
+		if (code_segment == '_') {
+			/*Determines if the traversal needs to go right*/
+			return find_letter(curr_root->right, code.substr(1));
 		}
+		
 		
 	}
 
