@@ -18,15 +18,22 @@ int main()
 	/*^The above code reads in the file and passes it to the 
 	build tree function in the Morse_Tree class*/
 
-	//my_tree.print_map();
-	string word = "Marigold";
-	string coded_word = my_tree.encode(word);
+	my_tree.print_map();
 
-	//cout << "Word: " << word << ", Coded Word: " << coded_word << endl;
+	cout << endl;
+
+	string word = "spaceship";
+	string coded_word = my_tree.encode(word);
+	//string coded_word="... .__. ._ _._. . ... .... .. .__."; //
+
+	cout << "Word: " << word << ", Coded Word: " << coded_word << endl;
 	
 	
 	string decoded_message=my_tree.decode(coded_word);
-	//my_tree.print_tree();
+	cout << endl;
+	cout << "Inorder traversal of tree: ";
+	my_tree.print_tree();
+	cout << endl;
 
 	cout << "Word: " << word << ", Coded Word: " << coded_word << endl;
 	cout << "Coded word: " << coded_word << " decoded word: " << decoded_message << endl;

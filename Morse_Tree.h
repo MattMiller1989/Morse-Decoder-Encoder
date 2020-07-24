@@ -52,7 +52,7 @@ public:
 
 	}
 	void build_tree(istream& read_in) { 
-		
+		//Time complexity of O(n)
 		
 		string line;
 		while (read_in >> line) {
@@ -103,6 +103,7 @@ public:
 			/*^calls the function with the tree's root as the starting
 			point */
 			decoded_message+=letter;
+			
 
 		} while (message);
 
@@ -150,7 +151,7 @@ public:
 		print_tree(root);
 	}
 
-	void print_tree(Morse_Node *& curr_root) {  //prints the tree using preorder traversal
+	void print_tree(Morse_Node *& curr_root) {  //prints the tree using inorder traversal
 		if (curr_root == NULL) {
 			return;
 		}
