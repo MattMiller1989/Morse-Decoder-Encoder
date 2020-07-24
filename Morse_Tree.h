@@ -40,7 +40,7 @@ public:
 		}
 		else {
 			if (code_segment == '.') { 
-				insert(curr_root->left, letter, code.substr(1));
+				insert(curr_root->left, letter, code.substr(1)); //these substring methods cut off the first letter 
 
 			}
 			if (code_segment == '_') {

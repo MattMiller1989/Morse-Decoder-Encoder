@@ -16,12 +16,12 @@ public:
 	Morse_Node() {
 
 	}
-	Morse_Node(const Morse_Node& other) {
+	Morse_Node(const Morse_Node& other) {//copy constructor 
 		letter = other.letter;
 		left = other.left;
 		right = other.right;
 	}
-	Morse_Node(char new_letter) {
+	Morse_Node(char new_letter) { //this constructor will be used the most
 		letter = new_letter;
 		left = NULL;
 		right = NULL;
@@ -32,6 +32,5 @@ public:
 		buffer  << letter;
 		return buffer.str();
 	}
-	/*This is pretty simple for a Node of a binary tree. I really dont
-	think that we will need to change this too much*/
+	
 };
